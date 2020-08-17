@@ -1,0 +1,15 @@
+Package: itssl
+Type: Package
+Title: Functions For An Internal TSL Statistics Workshop
+Version: 0.0.0.9000
+Authors@R: c(
+    person("Dan", "MacLean", email = "dan.maclean@tsl.ac.uk",role = c("cre","aut"))
+    )
+Description: A set of helpful functions to assist with live coding the presentation of a statistics workshop.
+    Also includes some functions and data used in workshop tasks and examples.
+License: file LICENSE
+Encoding: UTF-8
+LazyData: true
+Imports:
+  ggplot2
+RoxygenNote: 7.1.0
