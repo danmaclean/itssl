@@ -61,7 +61,8 @@ its_add_line_time <- function(a=1, b=0, colour="dodgerblue") {
 #' @param seed random seed
 #' @export
 #'
-its_random_xy_time <- function(n, min = 5, max = 15, mult = 2, seed = 456 ) {
+its_random_xy_time <- function(n, min = 5, max = 15, mult = 2, seed = "456" ) {
+  set.seed(seed)
   tibble::tibble(
      x = runif(n, min, max),
      y = x * mult + rnorm(20)
