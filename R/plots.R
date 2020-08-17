@@ -50,8 +50,6 @@ its_axplusb_time <- function(
 its_add_line_time <- function(a=1, b=0, colour="dodgerblue") {
   ggplot2::geom_abline(slope=a, intercept=b, colour=colour)
 }
-
-
 #' Generate some x and y data in a dataframe
 #'
 #' @param n number of points
@@ -67,4 +65,30 @@ its_random_xy_time <- function(n, min = 5, max = 15, mult = 2, seed = "456" ) {
      x = runif(n, min, max),
      y = x * mult + rnorm(20)
   )
+}
+#' plot xy data
+#'
+#' @param df dataframe with columns x and y
+#' @param line draw the computed line
+#' @param residuals draw the residuals
+#' @export
+#'
+its_plot_xy_time <- function(df, line = FALSE, residuals = FALSE) {
+  p <- ggplot2::ggplot(df) +
+    ggplot2::aes(x,y) +
+    ggplot2::geom_point() +
+    ggthemes::theme_tufte()
+  if (line){
+    p <- p + ggplot2::geom_smooth(method = "lm", formula = y ~ x, se = FALSE, linetype = "dashed", colour = "dodgerblue")
+  }
+  if (residuals){
+    model <- lm(y ~ x, data=df)
+    res_data <- tibble::tibble(
+      x = df$x,
+      y = df$y,
+      residual = predict(model)
+    )
+    p <- p + ggplot2::geom_segment(ggplot2::aes(x = x, y = y, xend = x, yend = residual), data = res_data)
+  }
+  p
 }
