@@ -50,3 +50,19 @@ its_axplusb_time <- function(
 its_add_line_time <- function(a=1, b=0, colour="dodgerblue") {
   ggplot2::geom_abline(slope=a, intercept=b, colour=colour)
 }
+
+
+#' Generate some x and y data in a dataframe
+#'
+#' @param n number of points
+#' @param min minimum random value
+#' @param max maximum random value
+#' @param mult how much bigger on average y is than x
+#' @param seed random seed
+#'
+its_random_xy_tim <- function(n, min = 5, max = 15, mult = 2, seed = 456 ) {
+  tibble::tibble(
+     x = runif(n, min, max),
+     y = x * mult + rnorm(20)
+  )
+}
