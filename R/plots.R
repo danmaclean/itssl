@@ -94,14 +94,43 @@ its_plot_xy_time <- function(df, line = FALSE, residuals = FALSE) {
   p
 }
 
+#' generate a barplot
+#' @param names_to what to call the variable containing the variable names
+#' @param values_to what to call the variable containing the values
+#' @param colour colour of the bars
+#' @param join_tops add a line joining the tops of bars
+#' @param points show individual points (geom_jitter)
 #' @export
-its_bardata_time <- function() {
-  tibble::tibble(group1 = runif(6, min = 4, max = 7),
-                       group2 = runif(6, min = 4.1, max = 7.1)
-  )
-}
+#' @return ggplot
+#'
+its_barplot_time <- function(df, names_to = "group", values_to = "value", colour = "dodgerblue", join_tops = FALSE, points = FALSE) {
+  grouped <- tidyr::pivot_longer(df, tidyselect::everything(), names_to = {{names_to}}, values_to = {{values_to}} ) %>%
+    dplyr::ungroup()
+  #   dplyr::group_by( .data[[ {{names_to}} ]] ) %>% dplyr::summarize(mean = mean(.data[[{{values_to}}]]))
+  #
+  #
+  #   p <- ggplot2::ggplot(grouped) +
+  #   ggplot2::aes( x = .data[[ {{ names_to }} ]], y = mean ) +
+  #   ggplot2::geom_bar(stat = "identity", width = 0.5, fill = colour) +
+  #   ggthemes::theme_tufte()
+  #
+  #   if (join_tops){
+  #
+  #     p <- p + ggplot2::stat_summary(position = "identity", geom = "line", data = df)
+  #   }
+  #   p
 
-#' @export
-its_table_time <- function(df) {
-  knitr::kable(df,align = "c")
+  p <- ggplot2::ggplot(grouped) +
+    ggplot2::aes( .data[[{{names_to}}]], .data[[{{values_to}}]], group = 1)+
+    ggplot2::stat_summary(ggplot2::aes(y = .data[[{{values_to}}]]), fun = "mean", geom = "bar", width = 0.5, fill = colour ) +
+    ggthemes::theme_tufte()
+
+    if (points){
+      p <- p + ggplot2::geom_jitter()
+    }
+    if (join_tops){
+      p <- p + ggplot2::stat_summary(ggplot2::aes(colour = as.numeric(.data[[{{values_to}}]]) ), fun = "mean", geom = "line", width = 2 )
+    }
+  p
+
 }
