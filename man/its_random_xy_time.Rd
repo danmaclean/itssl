@@ -4,7 +4,7 @@
 \alias{its_random_xy_time}
 \title{Generate some x and y data in a dataframe}
 \usage{
-its_random_xy_time(n, min = 5, max = 15, mult = 2, seed = 456)
+its_random_xy_time(n, min = 5, max = 15, mult = 2, seed = "456")
 }
 \arguments{
 \item{n}{number of points}

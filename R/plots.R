@@ -72,6 +72,7 @@ its_random_xy_time <- function(n, min = 5, max = 15, mult = 2, seed = "456" ) {
 #' @param line draw the computed line
 #' @param residuals draw the residuals
 #' @export
+#' @return ggplot
 #'
 its_plot_xy_time <- function(df, line = FALSE, residuals = FALSE) {
   p <- ggplot2::ggplot(df) +
@@ -91,4 +92,16 @@ its_plot_xy_time <- function(df, line = FALSE, residuals = FALSE) {
     p <- p + ggplot2::geom_segment(ggplot2::aes(x = x, y = y, xend = x, yend = residual), data = res_data)
   }
   p
+}
+
+#' @export
+its_bardata_time <- function() {
+  tibble::tibble(group1 = runif(6, min = 4, max = 7),
+                       group2 = runif(6, min = 4.1, max = 7.1)
+  )
+}
+
+#' @export
+its_table_time <- function(df) {
+  knitr::kable(df,align = "c")
 }
