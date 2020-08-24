@@ -153,7 +153,7 @@ its_bendy_line_time <- function() {
   ggplot2::ggplot() +
     ggplot2::aes(x,y) +
     ggplot2::geom_line() +
-    ggplot2::theme_tufte()
+    ggthemes::theme_tufte()
 
 }
 
