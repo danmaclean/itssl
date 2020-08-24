@@ -9,3 +9,12 @@ its_bardata_time <- function() {
 its_table_time <- function(df) {
   knitr::kable(df,align = "c")
 }
+
+#' removes a group from a dataframe
+#'
+#' @export
+its_remove_a_group_time <- function(df, col = "group", level = "trt2") {
+    filter(df, {{col}} != level) %>%
+    droplevels()
+
+}
