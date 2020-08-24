@@ -63,7 +63,7 @@ its_random_xy_time <- function(n, min = 5, max = 15, mult = 2, seed = "456" ) {
   set.seed(seed)
   tibble::tibble(
      x = runif(n, min, max),
-     y = x * mult + rnorm(20)
+     y = x * mult + rnorm(n)
   )
 }
 #' plot xy data
@@ -129,8 +129,51 @@ its_barplot_time <- function(df, names_to = "group", values_to = "value", colour
       p <- p + ggplot2::geom_jitter()
     }
     if (join_tops){
-      p <- p + ggplot2::stat_summary(ggplot2::aes(colour = as.numeric(.data[[{{values_to}}]]) ), fun = "mean", geom = "line", width = 2 )
+      p <- p + ggplot2::stat_summary(ggplot2::aes(colour = as.numeric(.data[[{{values_to}}]]) ), fun = "mean", geom = "line" )
     }
   p
 
 }
+
+#'
+#' @export
+its_categoric_scatter <- function(df, names_to = "group", values_to = "value", colour = "dodgerblue", join_tops = FALSE) {
+  df2 %>% grouped <- tidyr::pivot_longer(df, tidyselect::everything(), names_to = {{names_to}}, values_to = {{values_to}} ) %>%
+    dplyr::ungroup()
+    ggplot() + aes(group, value) + geom_point() + theme_minimal()
+}
+
+
+#'
+#' returns a straight line plot with a bend in it
+#' @export
+#'
+its_bendy_line_time <- function() {
+  data.frame(x = c(1,2,3), y = c(1,4,5)) %>%
+  ggplot2::ggplot() +
+    ggplot2::aes(x,y) +
+    ggplot2::geom_line() +
+    ggplot2::theme_tufte()
+
+}
+
+#'
+#'returns a multidimensional plot
+#' @export
+#'
+its_three_variable_plot_time <- function() {
+  df <- tibble::tibble(
+    x = runif(10, 5, 10),
+    z = x * 3 + rnorm(10),
+    y = x + z + rnorm(10)
+  )
+  s3d <- scatterplot3d::scatterplot3d(df, type="h", color = "dodgerblue", angle = 55)
+  mod <- lm(y ~ x + z, data = df)
+  s3d$plane3d(mod)
+}
+
+
+
+
+
+
