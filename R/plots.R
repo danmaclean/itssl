@@ -149,7 +149,7 @@ its_wide_to_long_time <- function(df, names_to = "group", values_to = "value") {
 #'
 #' @export
 its_categoric_scatter_time <- function(df, names_to = "group", values_to = "value", colour = "dodgerblue", join_tops = FALSE) {
-  df %>% its_wide_to_long_time(df, names_to = names_to, values_to = values_to) %>%
+  its_wide_to_long_time(df, names_to = names_to, values_to = values_to) %>%
     ggplot2::ggplot() +
     ggplot2::aes(x = .data[[ {{names_to}}]], y = .data[[ {{values_to }} ]] ) +
     ggplot2::geom_point() +
