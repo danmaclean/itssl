@@ -136,11 +136,13 @@ its_barplot_time <- function(df, names_to = "group", values_to = "value", colour
 }
 
 #'
+#'returns a categoric scatter plot
+#'
 #' @export
 its_categoric_scatter <- function(df, names_to = "group", values_to = "value", colour = "dodgerblue", join_tops = FALSE) {
-  df2 %>% grouped <- tidyr::pivot_longer(df, tidyselect::everything(), names_to = {{names_to}}, values_to = {{values_to}} ) %>%
-    dplyr::ungroup()
-    ggplot() + aes(group, value) + geom_point() + theme_minimal()
+  df %>% grouped <- tidyr::pivot_longer(df, tidyselect::everything(), names_to = {{names_to}}, values_to = {{values_to}} ) %>%
+    dplyr::ungroup() %>%
+    ggplot2::ggplot() + ggplot2::aes(.data[[ {{group}}]], .data[[ {{value }} ]] ) + ggplot2::geom_point() + ggplot2::theme_minimal()
 }
 
 
