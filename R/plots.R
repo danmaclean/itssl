@@ -136,11 +136,19 @@ its_barplot_time <- function(df, names_to = "group", values_to = "value", colour
 }
 
 #'
+#' returns a long version of a table
+#'
+#' @export
+its_wide_to_long_time <- function(df, names_to = "group", values_to = "value") {
+  df %>% tidyr::pivot_longer( tidyselect::everything(), names_to = {{names_to}}, values_to = {{values_to}} )
+}
+
+#'
 #'returns a categoric scatter plot
 #'
 #' @export
 its_categoric_scatter_time <- function(df, names_to = "group", values_to = "value", colour = "dodgerblue", join_tops = FALSE) {
-  df %>% tidyr::pivot_longer( tidyselect::everything(), names_to = {{names_to}}, values_to = {{values_to}} ) %>%
+  df %>% its_wide_to_long_time(df, names_to = names_to, values_to = values_to) %>%
     ggplot2::ggplot() +
     ggplot2::aes(x = .data[[ {{names_to}}]], y = .data[[ {{values_to }} ]] ) +
     ggplot2::geom_point() +
