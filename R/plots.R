@@ -140,7 +140,7 @@ its_barplot_time <- function(df, names_to = "group", values_to = "value", colour
 #'
 #' @export
 its_categoric_scatter_time <- function(df, names_to = "group", values_to = "value", colour = "dodgerblue", join_tops = FALSE) {
-  df %>% <- tidyr::pivot_longer(df, tidyselect::everything(), names_to = {{names_to}}, values_to = {{values_to}} ) %>%
+  df %>% tidyr::pivot_longer(df, tidyselect::everything(), names_to = {{names_to}}, values_to = {{values_to}} ) %>%
     ggplot2::ggplot() + ggplot2::aes(.data[[ {{group}}]], .data[[ {{value }} ]] ) + ggplot2::geom_point() + ggplot2::theme_minimal()
 }
 
