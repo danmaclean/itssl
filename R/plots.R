@@ -140,8 +140,9 @@ its_barplot_time <- function(df, names_to = "group", values_to = "value", colour
 #'
 #' @export
 its_wide_to_long_time <- function(df, names_to = "group", values_to = "value") {
-  df %>% tidyr::pivot_longer( tidyselect::everything(), names_to = {{names_to}}, values_to = {{values_to}} )
+  tidyr::pivot_longer(df, tidyselect::everything(), names_to = {{names_to}}, values_to = {{values_to}} )
 }
+
 
 #'
 #'returns a categoric scatter plot
