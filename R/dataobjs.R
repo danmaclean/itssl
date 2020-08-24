@@ -14,7 +14,7 @@ its_table_time <- function(df) {
 #'
 #' @export
 its_remove_a_group_time <- function(df, col = "group", level = "trt2") {
-    dplyr::filter(df, {{col}} != level) %>%
+    res <- dplyr::filter(df, .data[[{{col}}]] != level) %>%
     droplevels()
-
+    return(res)
 }
