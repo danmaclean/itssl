@@ -167,9 +167,21 @@ its_three_variable_plot_time <- function() {
     z = x * 3 + rnorm(10),
     y = x + z + rnorm(10)
   )
-  s3d <- scatterplot3d::scatterplot3d(df, type="h", color = "dodgerblue", angle = 55)
-  mod <- lm(y ~ x + z, data = df)
-  s3d$plane3d(mod)
+  scatter <- function(){
+    s3d <- scatterplot3d::scatterplot3d(df, type="h", angle = 55,color = "dodgerblue")
+    mod <- lm(y ~ x + z, data = df)
+    s3d$plane3d(mod)
+  }
+
+  p <- df %>% tidyr::pivot_longer(-y, names_to = "var") %>%
+    ggplot2::ggplot() +
+    ggplot2::aes(value, y) +
+    ggplot2::geom_point() +
+    ggplot2::facet_wrap(~ var, scales = "free_x") +
+    ggplot2::theme_minimal()
+
+cowplot::plot_grid(scatter, p, ncol = 1, rel_heights = c(0.65, 0.35))
+
 }
 
 
