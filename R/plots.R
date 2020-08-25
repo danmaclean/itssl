@@ -198,7 +198,47 @@ cowplot::plot_grid(scatter, p, ncol = 1, rel_heights = c(0.65, 0.35))
 }
 
 
+#' returns a plot summarising hypothesis tests as a figure
+#'
+#' @export
+its_summary_plot_time <- function() {
+  df <- data.frame(
+
+    group = rep(c("a","b"), 12),
+    measurement = runif(24)
+  )
+  mean_df <-  df %>%
+    dplyr::group_by(group) %>%
+    dplyr::summarise(mean_y = mean(measurement), sd_y = sd(measurement) ) %>%
+    dplyr::ungroup()
+
+  df %>%
+    ggplot2::ggplot() +
+    ggplot2::aes(group, measurement) +
+    ggplot2::geom_jitter(width=0.05) +
+    ggplot2::geom_col(ggplot2::aes(x = as.numeric(group), y = mean_y), data = mean_df, fill = "steelblue", alpha = 0.3, colour = "black") +
+    ggplot2::geom_errorbar( ggplot2::aes(x = group, ymin = mean_y - sd_y, ymax = mean_y + sd_y), data = mean_df, inherit.aes = FALSE, width = 0.1) +
+    ggplot2::geom_smooth( ggplot2::aes(x = as.numeric(group), y = measurement), method = lm, colour = "red", linetype = "dashed") +
+    ggplot2::theme_minimal() +
+    ggplot2::annotate(geom = "text", y = (mean_df$mean_y[[2]] + 0.06), x = "b", label = "How likely is this line to be flat, given the error?",)
+}
 
 
+#' returns a multi categry line plot
+#'
+#' @export
+its_multi_category_with_lines_time <- function() {
 
+  y_means <- PlantGrowth %>%
+    dplyr::group_by(group) %>%
+    dplyr::summarise(gmean = mean(weight))
+
+  PlantGrowth %>% ggplot2::ggplot() +
+    ggplot2::aes(group, weight) +
+    ggplot2::geom_point() +
+    ggplot2::geom_segment(x = 1, y = y_means$gmean[[1]], xend = 2, yend = y_means$gmean[[2]], colour = "dodgerblue",linetype = "dashed") +
+    ggplot2::geom_segment(x = 1, y = y_means$gmean[[1]], xend = 3, yend = y_means$gmean[[3]],linetype = "dashed" ) +
+    ggplot2::geom_segment(x = 2, y = y_means$gmean[[2]], xend = 3, yend = y_means$gmean[[3]], colour = "darkorange", linetype = "dashed") +
+    ggplot2::theme_minimal()
+}
 

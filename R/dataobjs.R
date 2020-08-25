@@ -18,3 +18,13 @@ its_remove_a_group_time <- function(df, col = "group", level = "trt2") {
     droplevels()
     return(res)
 }
+
+
+#' interaction data from Jim's stats site
+#'
+#' @export
+#'
+its_hot_dog_and_ice_cream_time <- function() {
+ readr::read_csv("data/Interactions_Categorical.csv") %>%
+    dplyr::transmute(Food = as.factor(Food), Condiment = as.factor(Condiment), Enjoyment )
+}
