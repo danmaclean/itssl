@@ -28,3 +28,21 @@ its_hot_dog_and_ice_cream_time <- function() {
  readr::read_csv("data/Interactions_Categorical.csv") %>%
     dplyr::transmute(Food = as.factor(Food), Condiment = as.factor(Condiment), Enjoyment )
 }
+
+#' compost data
+#'
+#' @export
+#'
+its_compost_time <- function() {
+  supplement = factor(rep(c("Formula X1","Formula X2"), 16))
+  compost = factor(rep(c("John Innes #1", "John Innes #2", "John Innes #2", "John Innes #1"), 8))
+  size = rep(runif(32))
+  tibble::tibble(
+    supplement = supplement,
+    compost = compost,
+    size = size
+  ) %>%
+    dplyr::mutate(size = dplyr::if_else( (supplement == "Formula X1" & compost == "John Innes #2"), (size + 1), size) )
+}
+
+

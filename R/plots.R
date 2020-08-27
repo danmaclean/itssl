@@ -242,3 +242,26 @@ its_multi_category_with_lines_time <- function() {
     ggplot2::theme_minimal()
 }
 
+#' example interactions
+#'
+#' @export
+its_interaction_example_time <- function(){
+ p1 <-  tibble::tibble(
+    condition = c(rep("a", 20), rep("b", 20), rep("a & b", 20) ),
+    x = runif(60, 0,6),
+    y = x * c(rep(1.3, 20), rep(2, 20), rep( 4, 20)) + rnorm(60)
+  ) %>%
+    ggplot2::ggplot() +
+    ggplot2::aes(x,y, colour = condition) +
+    ggplot2::geom_point() + ggplot2::geom_smooth(method = "lm", se = FALSE) +
+    ggthemes::theme_tufte()
+  p2 <- tibble::tibble(
+    condition = c(rep("control", 20), rep("a", 20), rep("b", 20), rep("a & b", 20) ),
+    measurement =  c(rep(1,20), rep(1.3, 20), rep(2, 20), rep( 4, 20)) + rnorm(80)
+    ) %>%
+    ggplot2::ggplot() +
+      ggplot2::aes( condition, measurement, group = 1)+
+      ggplot2::stat_summary(ggplot2::aes(y = measurement), fun = "mean", geom = "bar", width = 0.5, fill = "steelblue" ) +
+      ggthemes::theme_tufte()
+  cowplot::plot_grid(p1, p2, nrow = 1)
+}
