@@ -265,3 +265,57 @@ its_interaction_example_time <- function(){
       ggthemes::theme_tufte()
   cowplot::plot_grid(p1, p2, nrow = 1)
 }
+
+#' hot dog and ice cream box plots
+#'
+#' @export
+its_hot_dog_and_ice_cream_plot_time <- function() {
+  food <- its_hot_dog_and_ice_cream_time()
+  plot_condiment <- food %>%
+    #  group_by(Condiment) %>%
+    #  summarise(mean_enj = mean(Enjoyment)) %>%
+    dplyr::mutate(cond_num = dplyr::if_else( Condiment == "Chocolate Sauce", 1, 2) ) %>%
+    ggplot2::ggplot() + ggplot2::aes(Condiment, Enjoyment) +
+    ggplot2::geom_boxplot() +
+    ggplot2::geom_jitter(width = 0.1) +
+    ggplot2::geom_smooth(
+      ggplot2::aes(x = cond_num, y = Enjoyment),
+      method = lm,
+      colour = "red",
+      linetype = "dashed"
+    ) + ggplot2::theme_minimal()
+
+
+  plot_food <- food %>%
+    dplyr::mutate(food_num = dplyr::if_else( Food == "Hot Dog", 1, 2) ) %>%
+    ggplot2::ggplot() + ggplot2::aes(Food, Enjoyment) +
+
+    ggplot2::geom_boxplot() +
+    ggplot2::geom_jitter(width = 0.1) +
+    ggplot2::geom_smooth(
+      ggplot2::aes(x = food_num, y = Enjoyment),
+      method = lm,
+      colour = "red",
+      linetype = "dashed"
+    )  + ggplot2::theme_minimal()
+
+cowplot::plot_grid(plot_condiment, plot_food, nrow = 1)
+}
+
+#' plot interaction in food and condiment
+#'
+#' @export
+its_hot_dog_and_ice_cream_two_ways_time <- function() {
+  its_hot_dog_and_ice_cream_time() %>%
+    dplyr::mutate(food_num = dplyr::if_else( Food == "Hot Dog", 1, 2) ) %>%
+    ggplot2::ggplot() + ggplot2::aes(Food, Enjoyment) +
+    ggplot2::geom_jitter( ggplot2::aes(colour = Condiment)) +
+    ggplot2::geom_smooth(
+      ggplot2::aes(x = food_num, y = Enjoyment, colour = Condiment),
+      method = lm,
+      se = FALSE
+    )  + ggplot2::theme_minimal()
+
+}
+
+
