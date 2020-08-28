@@ -45,4 +45,23 @@ its_compost_time <- function() {
     dplyr::mutate(size = dplyr::if_else( (supplement == "Formula X1" & compost == "John Innes #2"), (size + 1), size) )
 }
 
+#' hr scores table
+#'
+#' @export
+its_hr_score_scheme_time <- function() {
+  tibble::tibble(
+    severity = c("Dead", "Very Ill", "Ill", "No Effect"),
+    score = c(4,3,2,1)
+  )  %>% its_table_time()
+}
 
+#' hr score data
+#'
+#' @export
+its_hr_scores_time <- function() {
+  tibble::tibble(
+    strain = rep(c("control", "mild", "deadly"),3),
+    replicate = c(rep(1, 3), rep(2,3), rep(3,3)),
+    score = c( 1, 3, 4, 2, 3, 4, 1, 3, 3)
+  ) %>% its_table_time()
+}
