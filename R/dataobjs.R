@@ -63,5 +63,5 @@ its_hr_scores_time <- function() {
     strain = rep(c("control", "mild", "deadly"),3),
     replicate = c(rep(1, 3), rep(2,3), rep(3,3)),
     score = c( 1, 3, 4, 2, 3, 4, 1, 3, 3)
-  ) %>% its_table_time()
+  )
 }
