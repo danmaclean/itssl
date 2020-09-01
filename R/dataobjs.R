@@ -65,3 +65,60 @@ its_hr_scores_time <- function() {
     score = c( 1, 3, 4, 2, 3, 4, 1, 3, 3)
   )
 }
+
+#' mendel data
+#'
+#' @export
+its_mendel_data_time <- function() {
+  tibble::tibble(
+    cross = sample(c("PP", "PW", "WP", "WW"), 600, replace = TRUE) ,
+    result = dplyr::if_else(cross == "WW", "W", "P")
+  )
+}
+
+#' mendel count data
+#'
+#' @export
+its_mendel_count_data_time <- function() {
+  its_mendel_data_time() %>%
+    dplyr::count(result) %>%
+    dplyr::rename(colour = result, count = n)
+}
+
+#' mendel frequency data
+#'
+#' @export
+its_mendel_frequency_time <- function() {
+  its_mendel_count_data_time() %>%
+    tidyr::pivot_wider(names_from = c("colour"), values_from = c("count")) %>%
+    dplyr::mutate(
+      ratio_p = P / min(c(P, W)),
+      ratio_w = W / min(c(P, W)),
+      freq_p = P / (P + W),
+      freq_w = W / (P + W)
+    )
+}
+
+#' voter data
+#'
+#' @export
+its_voting_data_time <- function() {
+  data.frame(
+    expand.grid(
+      generation = c("boomer", "millenial"),
+      alignment = c("fascist", "instagram", "marxist" )
+    ),
+    count = c(279, 165, 74, 47, 225, 191)
+  )
+}
+
+#' job data
+#'
+#' @export
+its_job_mood_time <- function() {
+  data.frame(
+    mood = c('curious', 'curious', 'tense', 'tense', 'whimsical', 'whimsical','tense', 'whimsical', 'whimsical'),
+    role = c('milliner', 'carpenter', 'milliner', 'carpenter', 'milliner', 'carpenter', "cooper", "cooper", "cooper"),
+    Freq = c(100, 70, 30, 32, 110, 120, 30, 32, 110)
+  )
+}
