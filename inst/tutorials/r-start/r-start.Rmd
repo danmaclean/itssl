@@ -11,7 +11,9 @@ runtime: shiny_prerendered
 library(learnr)
 library(itssl)
 library(gradethis)
-gradethis_setup()
+gradethis_setup(  exercise.timelimit = 60,
+  exercise.checker = grade_learnr,
+  exercise.error.check.code = "grade_code()")
 #tutorial_options(exercise.error.check.code = NULL)
 knitr::opts_chunk$set(echo = FALSE)
 ```
