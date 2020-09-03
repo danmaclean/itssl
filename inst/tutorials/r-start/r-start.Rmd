@@ -9,7 +9,7 @@ runtime: shiny_prerendered
 #library(gradethis)
 #gradethis_setup()
 library(learnr)
-#library(itssl)
+library(itssl)
 #tutorial_options(exercise.error.check.code = NULL)
 knitr::opts_chunk$set(echo = FALSE)
 ```
