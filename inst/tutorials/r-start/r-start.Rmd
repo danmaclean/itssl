@@ -5,10 +5,11 @@ runtime: shiny_prerendered
 ---
 
 ```{r setup, include=FALSE}
-#devtools::load_all()
+devtools::load_all()
 library(gradethis)
 gradethis_setup()
 library(learnr)
+#library(itssl)
 tutorial_options(exercise.error.check.code = NULL)
 knitr::opts_chunk$set(echo = FALSE)
 ```
