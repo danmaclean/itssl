@@ -122,3 +122,14 @@ its_job_mood_time <- function() {
     Freq = c(100, 70, 30, 32, 110, 120, 30, 32, 110)
   )
 }
+
+#' tutorial data
+#'
+#' @export
+its_small_data_frame_time <- function() {
+  data.frame(
+    names = c("Guido", "Marty", "Alan"),
+    age = c(24,45,11),
+    score = runif(3) * 100
+  )
+}
