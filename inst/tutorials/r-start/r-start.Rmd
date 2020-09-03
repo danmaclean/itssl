@@ -10,11 +10,13 @@ runtime: shiny_prerendered
 #gradethis_setup()
 library(learnr)
 library(itssl)
+library(gradethis)
 #tutorial_options(exercise.error.check.code = NULL)
 knitr::opts_chunk$set(echo = FALSE)
 ```
-
-
+with learnr
+with itssl
+with gradethis
 <!-- ## Variables -->
 
 <!-- Let's see how variables are used. -->
