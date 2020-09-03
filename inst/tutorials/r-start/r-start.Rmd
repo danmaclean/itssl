@@ -8,7 +8,7 @@ runtime: shiny_prerendered
 library(learnr)
 library(gradethis)
 devtools::load_all()
-gradethis_setup()
+gradethis::gradethis_setup()
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
