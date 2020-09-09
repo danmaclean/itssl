@@ -217,10 +217,12 @@ d &lt;- c(a,b)</code></pre>
 </div>
 
 <script type="application/shiny-prerendered" data-context="server-start">
-library(learnr)
-library(gradethis)
 devtools::load_all()
+library(gradethis)
 gradethis_setup()
+library(learnr)
+#library(itssl)
+tutorial_options(exercise.error.check.code = NULL)
 knitr::opts_chunk$set(echo = FALSE)
 </script>
  
@@ -239,18 +241,21 @@ session$onSessionEnded(function() {
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
-learnr:::store_exercise_setup_chunk("__setup__", c("library(learnr)", "library(gradethis)", "devtools::load_all()", 
-"gradethis_setup()", "knitr::opts_chunk$set(echo = FALSE)"), overwrite = FALSE)
+learnr:::store_exercise_setup_chunk("__setup__", c("devtools::load_all()", "library(gradethis)", "gradethis_setup()", 
+"library(learnr)", "#library(itssl)", "tutorial_options(exercise.error.check.code = NULL)", 
+"knitr::opts_chunk$set(echo = FALSE)"), overwrite = FALSE)
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
-learnr:::store_exercise_setup_chunk("__setup__", c("library(learnr)", "library(gradethis)", "devtools::load_all()", 
-"gradethis_setup()", "knitr::opts_chunk$set(echo = FALSE)"), overwrite = FALSE)
+learnr:::store_exercise_setup_chunk("__setup__", c("devtools::load_all()", "library(gradethis)", "gradethis_setup()", 
+"library(learnr)", "#library(itssl)", "tutorial_options(exercise.error.check.code = NULL)", 
+"knitr::opts_chunk$set(echo = FALSE)"), overwrite = FALSE)
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
-learnr:::store_exercise_setup_chunk("__setup__", c("library(learnr)", "library(gradethis)", "devtools::load_all()", 
-"gradethis_setup()", "knitr::opts_chunk$set(echo = FALSE)"), overwrite = FALSE)
+learnr:::store_exercise_setup_chunk("__setup__", c("devtools::load_all()", "library(gradethis)", "gradethis_setup()", 
+"library(learnr)", "#library(itssl)", "tutorial_options(exercise.error.check.code = NULL)", 
+"knitr::opts_chunk$set(echo = FALSE)"), overwrite = FALSE)
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
@@ -280,9 +285,9 @@ learnr:::store_exercise_cache("two-plus-two", list(setup = NULL, chunks = list(l
     external = TRUE, sanitize = FALSE, interval = 1, aniopts = "controls,loop", 
     warning = TRUE, error = FALSE, message = TRUE, render = NULL, 
     ref.label = NULL, child = NULL, engine = "r", split = FALSE, 
-    include = TRUE, purl = TRUE, max.print = 1000, tutorial = TRUE, 
-    exercise.timelimit = 60, exercise.checker = "function (label = NULL, solution_code = NULL, user_code = NULL, \n    check_code = NULL, envir_result = NULL, evaluate_result = NULL, \n    envir_prep = NULL, last_value = NULL, ...) \n{\n    (utils::getFromNamespace(\"grade_learnr_\", \"gradethis\"))(label = label, \n        solution_code = solution_code, user_code = user_code, \n        check_code = check_code, envir_result = envir_result, \n        evaluate_result = evaluate_result, envir_prep = envir_prep, \n        last_value = last_value, ...)\n}", 
-    exercise.error.check.code = "grade_code()", label = "two-plus-two", 
+    include = TRUE, purl = TRUE, max.print = 1000, exercise.timelimit = 60, 
+    exercise.checker = "function (label = NULL, solution_code = NULL, user_code = NULL, \n    check_code = NULL, envir_result = NULL, evaluate_result = NULL, \n    envir_prep = NULL, last_value = NULL, ...) \n{\n    (utils::getFromNamespace(\"grade_learnr_\", \"gradethis\"))(label = label, \n        solution_code = solution_code, user_code = user_code, \n        check_code = check_code, envir_result = envir_result, \n        evaluate_result = evaluate_result, envir_prep = envir_prep, \n        last_value = last_value, ...)\n}", 
+    exercise.error.check.code = NULL, tutorial = TRUE, label = "two-plus-two", 
     exercise = TRUE, out.width.px = 624, out.height.px = 384, 
     code = "", params.src = "two-plus-two, exercise=TRUE", fig.num = 0L, 
     exercise.df_print = "paged"), engine = "r"))
@@ -318,9 +323,8 @@ learnr:::store_exercise_cache("two-plus-two-variables", list(setup = NULL, chunk
         aniopts = "controls,loop", warning = TRUE, error = FALSE, 
         message = TRUE, render = NULL, ref.label = NULL, child = NULL, 
         engine = "r", split = FALSE, include = TRUE, purl = TRUE, 
-        max.print = 1000, tutorial = TRUE, exercise.timelimit = 60, 
-        exercise.checker = "function (label = NULL, solution_code = NULL, user_code = NULL, \n    check_code = NULL, envir_result = NULL, evaluate_result = NULL, \n    envir_prep = NULL, last_value = NULL, ...) \n{\n    (utils::getFromNamespace(\"grade_learnr_\", \"gradethis\"))(label = label, \n        solution_code = solution_code, user_code = user_code, \n        check_code = check_code, envir_result = envir_result, \n        evaluate_result = evaluate_result, envir_prep = envir_prep, \n        last_value = last_value, ...)\n}", 
-        exercise.error.check.code = "grade_code()", label = "two-plus-two-variables", 
+        max.print = 1000, exercise.timelimit = 60, exercise.checker = "function (label = NULL, solution_code = NULL, user_code = NULL, \n    check_code = NULL, envir_result = NULL, evaluate_result = NULL, \n    envir_prep = NULL, last_value = NULL, ...) \n{\n    (utils::getFromNamespace(\"grade_learnr_\", \"gradethis\"))(label = label, \n        solution_code = solution_code, user_code = user_code, \n        check_code = check_code, envir_result = envir_result, \n        evaluate_result = evaluate_result, envir_prep = envir_prep, \n        last_value = last_value, ...)\n}", 
+        exercise.error.check.code = NULL, tutorial = TRUE, label = "two-plus-two-variables", 
         exercise = TRUE, out.width.px = 624, out.height.px = 384, 
         code = "", params.src = "two-plus-two-variables, exercise=TRUE", 
         fig.num = 0L, exercise.df_print = "paged"), engine = "r"))
@@ -354,9 +358,8 @@ learnr:::store_exercise_cache("rand", list(setup = NULL, chunks = list(list(labe
         aniopts = "controls,loop", warning = TRUE, error = FALSE, 
         message = TRUE, render = NULL, ref.label = NULL, child = NULL, 
         engine = "r", split = FALSE, include = TRUE, purl = TRUE, 
-        max.print = 1000, tutorial = TRUE, exercise.timelimit = 60, 
-        exercise.checker = "function (label = NULL, solution_code = NULL, user_code = NULL, \n    check_code = NULL, envir_result = NULL, evaluate_result = NULL, \n    envir_prep = NULL, last_value = NULL, ...) \n{\n    (utils::getFromNamespace(\"grade_learnr_\", \"gradethis\"))(label = label, \n        solution_code = solution_code, user_code = user_code, \n        check_code = check_code, envir_result = envir_result, \n        evaluate_result = evaluate_result, envir_prep = envir_prep, \n        last_value = last_value, ...)\n}", 
-        exercise.error.check.code = "grade_code()", label = "rand", 
+        max.print = 1000, exercise.timelimit = 60, exercise.checker = "function (label = NULL, solution_code = NULL, user_code = NULL, \n    check_code = NULL, envir_result = NULL, evaluate_result = NULL, \n    envir_prep = NULL, last_value = NULL, ...) \n{\n    (utils::getFromNamespace(\"grade_learnr_\", \"gradethis\"))(label = label, \n        solution_code = solution_code, user_code = user_code, \n        check_code = check_code, envir_result = envir_result, \n        evaluate_result = evaluate_result, envir_prep = envir_prep, \n        last_value = last_value, ...)\n}", 
+        exercise.error.check.code = NULL, tutorial = TRUE, label = "rand", 
         exercise = TRUE, out.width.px = 624, out.height.px = 384, 
         code = "", params.src = "rand, exercise=TRUE", fig.num = 0L, 
         exercise.df_print = "paged"), engine = "r"))
@@ -365,13 +368,13 @@ learnr:::store_exercise_cache("rand", list(setup = NULL, chunks = list(list(labe
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "vector-ops-1", 
     question = structure("What is the result of <code>mean(a)<\u002fcode>", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_9ea5312", 
+    "character")), answers = list(structure(list(id = "lnr_ans_ba336e0", 
         option = "6", value = "6", label = structure("6", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_1791ff6", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_8d38240", 
         option = "2", value = "2", label = structure("2", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_6fd04b6", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_3fbebf1", 
         option = "3", value = "3", label = structure("3", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL), class = c("tutorial_question_answer", 
     "tutorial_quiz_answer"))), button_labels = list(submit = structure("Submit Answer", html = TRUE, class = c("html", 
@@ -383,17 +386,17 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
         answer = "vector-ops-1-answer", question = "vector-ops-1"), 
     loading = structure("<strong>Loading:<\u002fstrong> \nWhat is the result of <code>mean(a)<\u002fcode>\n<br/><br/><br/>", html = TRUE, class = c("html", 
     "character")), random_answer_order = FALSE, allow_retry = FALSE, 
-    seed = 702942609.672667, options = list()), class = c("learnr_radio", 
+    seed = 1749078844.68552, options = list()), class = c("learnr_radio", 
 "tutorial_question")))
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "vector-ops-2", 
     question = structure("What is the result of <code>a + 2<\u002fcode>?", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_a006b3", 
+    "character")), answers = list(structure(list(id = "lnr_ans_e775ca9", 
         option = "3,4,5", value = "3,4,5", label = structure("3,4,5", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_13b3349", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_dea1a6", 
         option = "1,2,3,2", value = "1,2,3,2", label = structure("1,2,3,2", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL), class = c("tutorial_question_answer", 
     "tutorial_quiz_answer"))), button_labels = list(submit = structure("Submit Answer", html = TRUE, class = c("html", 
@@ -405,23 +408,23 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
         answer = "vector-ops-2-answer", question = "vector-ops-2"), 
     loading = structure("<strong>Loading:<\u002fstrong> \nWhat is the result of <code>a + 2<\u002fcode>?\n<br/><br/><br/>", html = TRUE, class = c("html", 
     "character")), random_answer_order = FALSE, allow_retry = FALSE, 
-    seed = 721890963.163843, options = list()), class = c("learnr_radio", 
+    seed = 544297644.746542, options = list()), class = c("learnr_radio", 
 "tutorial_question")))
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "vector-ops-3", 
     question = structure("What is the result of <code>d * 2<\u002fcode>?", html = TRUE, class = c("html", 
-    "character")), answers = list(structure(list(id = "lnr_ans_9c90105", 
+    "character")), answers = list(structure(list(id = "lnr_ans_82f66eb", 
         option = "3,4,5", value = "3,4,5", label = structure("3,4,5", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_2a91b18", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_9f1c1fc", 
         option = "2,4,6", value = "2,4,6", label = structure("2,4,6", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_1aaca", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_f91dea7", 
         option = "Error ...", value = "Error ...", label = structure("Error ...", html = TRUE, class = c("html", 
         "character")), correct = TRUE, message = NULL), class = c("tutorial_question_answer", 
-    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_3bb4bbf", 
+    "tutorial_quiz_answer")), structure(list(id = "lnr_ans_b7c2641", 
         option = "2,4,6,NA,NA", value = "2,4,6,NA,NA", label = structure("2,4,6,NA,NA", html = TRUE, class = c("html", 
         "character")), correct = FALSE, message = NULL), class = c("tutorial_question_answer", 
     "tutorial_quiz_answer"))), button_labels = list(submit = structure("Submit Answer", html = TRUE, class = c("html", 
@@ -433,7 +436,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
         answer = "vector-ops-3-answer", question = "vector-ops-3"), 
     loading = structure("<strong>Loading:<\u002fstrong> \nWhat is the result of <code>d * 2<\u002fcode>?\n<br/><br/><br/>", html = TRUE, class = c("html", 
     "character")), random_answer_order = FALSE, allow_retry = FALSE, 
-    seed = 386295892.820117, options = list()), class = c("learnr_radio", 
+    seed = 1279593324.40414, options = list()), class = c("learnr_radio", 
 "tutorial_question")))
 </script>
  
@@ -464,9 +467,8 @@ learnr:::store_exercise_cache("str-dataframe", list(setup = NULL, chunks = list(
     interval = 1, aniopts = "controls,loop", warning = TRUE, 
     error = FALSE, message = TRUE, render = NULL, ref.label = NULL, 
     child = NULL, engine = "r", split = FALSE, include = TRUE, 
-    purl = TRUE, max.print = 1000, tutorial = TRUE, exercise.timelimit = 60, 
-    exercise.checker = "function (label = NULL, solution_code = NULL, user_code = NULL, \n    check_code = NULL, envir_result = NULL, evaluate_result = NULL, \n    envir_prep = NULL, last_value = NULL, ...) \n{\n    (utils::getFromNamespace(\"grade_learnr_\", \"gradethis\"))(label = label, \n        solution_code = solution_code, user_code = user_code, \n        check_code = check_code, envir_result = envir_result, \n        evaluate_result = evaluate_result, envir_prep = envir_prep, \n        last_value = last_value, ...)\n}", 
-    exercise.error.check.code = "grade_code()", label = "str-dataframe", 
+    purl = TRUE, max.print = 1000, exercise.timelimit = 60, exercise.checker = "function (label = NULL, solution_code = NULL, user_code = NULL, \n    check_code = NULL, envir_result = NULL, evaluate_result = NULL, \n    envir_prep = NULL, last_value = NULL, ...) \n{\n    (utils::getFromNamespace(\"grade_learnr_\", \"gradethis\"))(label = label, \n        solution_code = solution_code, user_code = user_code, \n        check_code = check_code, envir_result = envir_result, \n        evaluate_result = evaluate_result, envir_prep = envir_prep, \n        last_value = last_value, ...)\n}", 
+    exercise.error.check.code = NULL, tutorial = TRUE, label = "str-dataframe", 
     exercise = TRUE, out.width.px = 624, out.height.px = 384, 
     code = "", params.src = " str-dataframe, exercise = TRUE", 
     fig.num = 0L, exercise.df_print = "paged"), engine = "r"))
@@ -474,15 +476,15 @@ learnr:::store_exercise_cache("str-dataframe", list(setup = NULL, chunks = list(
  
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "dataframe", question = structure("What does the output tell us about the column <code>names<\u002fcode>?", html = TRUE, class = c("html", 
-"character")), answers = list(structure(list(id = "lnr_ans_8544c2f", 
+"character")), answers = list(structure(list(id = "lnr_ans_8f42bcc", 
     option = "it has chromosome data in it", value = "it has chromosome data in it", 
     label = structure("it has chromosome data in it", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_6f8e72a", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_f4ee52b", 
     option = "it is text-based data", value = "it is text-based data", 
     label = structure("it is text-based data", html = TRUE, class = c("html", 
     "character")), correct = TRUE, message = NULL), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_93da55d", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_95897f5", 
     option = "it has numeric data in it", value = "it has numeric data in it", 
     label = structure("it has numeric data in it", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL), class = c("tutorial_question_answer", 
@@ -494,28 +496,28 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
 "character")), message = NULL, post_message = NULL), ids = list(
     answer = "dataframe-answer", question = "dataframe"), loading = structure("<strong>Loading:<\u002fstrong> \nWhat does the output tell us about the column <code>names<\u002fcode>?\n<br/><br/><br/>", html = TRUE, class = c("html", 
 "character")), random_answer_order = FALSE, allow_retry = FALSE, 
-    seed = 2141308728.00288, options = list()), class = c("learnr_radio", 
+    seed = 726252315.661812, options = list()), class = c("learnr_radio", 
 "tutorial_question")))
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "help-1", question = structure("Does the <code>mean()<\u002fcode> function compute", html = TRUE, class = c("html", 
-"character")), answers = list(structure(list(id = "lnr_ans_1e45dfa", 
+"character")), answers = list(structure(list(id = "lnr_ans_b70fccb", 
     option = "the geometric mean", value = "the geometric mean", 
     label = structure("the geometric mean", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_9866847", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_397a7fa", 
     option = "the average", value = "the average", label = structure("the average", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_5fc3c4f", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_3bff389", 
     option = "the arithmetic mean", value = "the arithmetic mean", 
     label = structure("the arithmetic mean", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_43c3c7d", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_dd57b7f", 
     option = "the harmonic mean", value = "the harmonic mean", 
     label = structure("the harmonic mean", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_f58c7a1", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_859995f", 
     option = "the (trimmed) arithmetic mean", value = "the (trimmed) arithmetic mean", 
     label = structure("the (trimmed) arithmetic mean", html = TRUE, class = c("html", 
     "character")), correct = TRUE, message = NULL), class = c("tutorial_question_answer", 
@@ -527,22 +529,22 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
 "character")), message = NULL, post_message = NULL), ids = list(
     answer = "help-1-answer", question = "help-1"), loading = structure("<strong>Loading:<\u002fstrong> \nDoes the <code>mean()<\u002fcode> function compute\n<br/><br/><br/>", html = TRUE, class = c("html", 
 "character")), random_answer_order = FALSE, allow_retry = FALSE, 
-    seed = 456493033.787429, options = list()), class = c("learnr_radio", 
+    seed = 1794761621.66425, options = list()), class = c("learnr_radio", 
 "tutorial_question")))
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "help-2", question = structure("What does the <code>c<\u002fcode> of the <code>c()<\u002fcode> function stand for?", html = TRUE, class = c("html", 
-"character")), answers = list(structure(list(id = "lnr_ans_ff7798a", 
+"character")), answers = list(structure(list(id = "lnr_ans_2a11fa3", 
     option = "concatanate", value = "concatanate", label = structure("concatanate", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_c0d8824", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_69fbd39", 
     option = "convolve", value = "convolve", label = structure("convolve", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_2d7c53f", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_c516ec6", 
     option = "combine", value = "combine", label = structure("combine", html = TRUE, class = c("html", 
     "character")), correct = TRUE, message = NULL), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_fa16d2e", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_c83995c", 
     option = "complete", value = "complete", label = structure("complete", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL), class = c("tutorial_question_answer", 
 "tutorial_quiz_answer"))), button_labels = list(submit = structure("Submit Answer", html = TRUE, class = c("html", 
@@ -553,19 +555,19 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
 "character")), message = NULL, post_message = NULL), ids = list(
     answer = "help-2-answer", question = "help-2"), loading = structure("<strong>Loading:<\u002fstrong> \nWhat does the <code>c<\u002fcode> of the <code>c()<\u002fcode> function stand for?\n<br/><br/><br/>", html = TRUE, class = c("html", 
 "character")), random_answer_order = FALSE, allow_retry = FALSE, 
-    seed = 1981502991.07729, options = list()), class = c("learnr_radio", 
+    seed = 982669712.542409, options = list()), class = c("learnr_radio", 
 "tutorial_question")))
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "help-3", question = structure("Do you fully understand what the <code>apply<\u002fcode> function does?", html = TRUE, class = c("html", 
-"character")), answers = list(structure(list(id = "lnr_ans_8eaafdd", 
+"character")), answers = list(structure(list(id = "lnr_ans_4e9037d", 
     option = "Yes!", value = "Yes!", label = structure("Yes!", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_17928bf", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_133313d", 
     option = "No", value = "No", label = structure("No", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_bd7263", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_2dbfdc4", 
     option = "No, but that's ok, Ive read the help and it's a bit opaque, but I think some googling will help", 
     value = "No, but that's ok, Ive read the help and it's a bit opaque, but I think some googling will help", 
     label = structure("No, but that&#39;s ok, Ive read the help and it&#39;s a bit opaque, but I think some googling will help", html = TRUE, class = c("html", 
@@ -578,7 +580,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
 "character")), message = NULL, post_message = NULL), ids = list(
     answer = "help-3-answer", question = "help-3"), loading = structure("<strong>Loading:<\u002fstrong> \nDo you fully understand what the <code>apply<\u002fcode> function does?\n<br/><br/><br/>", html = TRUE, class = c("html", 
 "character")), random_answer_order = FALSE, allow_retry = FALSE, 
-    seed = 539050717.248985, options = list()), class = c("learnr_radio", 
+    seed = 1202346217.44011, options = list()), class = c("learnr_radio", 
 "tutorial_question")))
 </script>
  <!--html_preserve-->
@@ -588,7 +590,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
 <!--/html_preserve-->
 <!--html_preserve-->
 <script type="application/shiny-prerendered" data-context="execution_dependencies">
-{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["packages"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["packages","version"]},"class":{"type":"character","attributes":{},"value":["data.frame"]},"row.names":{"type":"integer","attributes":{},"value":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76]}},"value":[{"type":"character","attributes":{},"value":["assertthat","backports","base","callr","checkmate","cli","colorspace","compiler","crayon","curl","datasets","desc","devtools","digest","dplyr","ellipsis","evaluate","fansi","fastmap","fs","generics","ggplot2","glue","gradethis","graphics","grDevices","grid","gtable","htmltools","htmlwidgets","httpuv","itssl","jsonlite","knitr","later","learnr","lifecycle","magrittr","markdown","memoise","methods","mime","munsell","pillar","pkgbuild","pkgconfig","pkgload","prettyunits","processx","promises","ps","purrr","R6","Rcpp","remotes","rlang","rmarkdown","rprojroot","rstudioapi","scales","sessioninfo","shiny","stats","stringi","stringr","testthat","tibble","tidyselect","tools","usethis","utils","vctrs","withr","xfun","xtable","yaml"]},{"type":"character","attributes":{},"value":["0.2.1","1.1.9","4.0.2","3.4.3","2.0.0","2.0.2","1.4-1","4.0.2","1.3.4","4.3","4.0.2","1.2.0","2.3.1","0.6.25","1.0.2","0.3.1","0.14","0.4.1","1.0.1","1.5.0","0.0.2","3.3.2","1.4.2","0.1.0.9004","4.0.2","4.0.2","4.0.2","0.3.0","0.5.0.9000","1.5.1","1.5.4","0.0.0.9000","1.7.0","1.29","1.1.0.1","0.10.1.9006","0.2.0","1.5","1.1","1.1.0","4.0.2","0.9","0.5.0","1.4.6","1.1.0","2.0.3","1.1.0","1.1.1","3.4.3","1.1.1","1.3.4","0.3.4","2.4.1","1.0.5","2.2.0","0.4.7","2.3","1.3-2","0.11","1.1.1","1.1.1","1.5.0","4.0.2","1.4.6","1.4.0","2.3.2","3.0.3","1.1.0","4.0.2","1.6.1","4.0.2","0.3.4","2.2.0","0.16","1.8-4","2.2.1"]}]}]}
+{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["packages"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["packages","version"]},"class":{"type":"character","attributes":{},"value":["data.frame"]},"row.names":{"type":"integer","attributes":{},"value":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80]}},"value":[{"type":"character","attributes":{},"value":["assertthat","backports","base","callr","checkmate","cli","colorspace","compiler","cowplot","crayon","curl","datasets","desc","devtools","digest","dplyr","ellipsis","evaluate","fansi","fastmap","fs","generics","ggplot2","ggthemes","glue","gradethis","graphics","grDevices","grid","gtable","htmltools","htmlwidgets","httpuv","itssl","jsonlite","knitr","later","learnr","lifecycle","magrittr","markdown","memoise","methods","mime","munsell","pillar","pkgbuild","pkgconfig","pkgload","prettyunits","processx","promises","ps","purrr","R6","Rcpp","remotes","rlang","rmarkdown","rprojroot","rstudioapi","scales","scatterplot3d","sessioninfo","shiny","stats","stringi","stringr","testthat","tibble","tidyr","tidyselect","tools","usethis","utils","vctrs","withr","xfun","xtable","yaml"]},{"type":"character","attributes":{},"value":["0.2.1","1.1.9","4.0.2","3.4.3","2.0.0","2.0.2","1.4-1","4.0.2","1.0.0","1.3.4","4.3","4.0.2","1.2.0","2.3.1","0.6.25","1.0.2","0.3.1","0.14","0.4.1","1.0.1","1.5.0","0.0.2","3.3.2","4.2.0","1.4.2","0.1.0.9004","4.0.2","4.0.2","4.0.2","0.3.0","0.5.0.9000","1.5.1","1.5.4","0.0.0.9000","1.7.0","1.29","1.1.0.1","0.10.1.9006","0.2.0","1.5","1.1","1.1.0","4.0.2","0.9","0.5.0","1.4.6","1.1.0","2.0.3","1.1.0","1.1.1","3.4.3","1.1.1","1.3.4","0.3.4","2.4.1","1.0.5","2.2.0","0.4.7","2.3","1.3-2","0.11","1.1.1","0.3-41","1.1.1","1.5.0","4.0.2","1.4.6","1.4.0","2.3.2","3.0.3","1.1.2","1.1.0","4.0.2","1.6.1","4.0.2","0.3.4","2.2.0","0.16","1.8-4","2.2.1"]}]}]}
 </script>
 <!--/html_preserve-->
 </div>

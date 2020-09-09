@@ -319,5 +319,64 @@ its_hot_dog_and_ice_cream_two_ways_time <- function() {
 }
 
 
+#' plots of goodness of the mean
+#' @param n number of points to generate
+#' @param type hist or jitter type of plot to return
+#' @export
+its_is_the_mean_a_good_summary_time <- function(n, type = "hist") {
 
+  if (n %% 2 == 1){
+    n <- n + 1
+  }
+  b = 0.2
+  df <- data.frame(
+    distribution = c(
+      rep("normal", n),
+      rep("wide_normal",n),
+      rep("uniform", n),
+      rep("skew", n),
+      rep("multimodal",n)
+    ),
+    values = c(
+      rnorm(n),
+      rnorm(n, 0, 4),
+      runif(n, -3, 3),
+      fGarch::rsnorm(n, mean=0, sd = 1, xi = 2.5),
+      c(rnorm(n/2, -2, 1), rnorm(n/2, 2,1))
+
+    )
+  )
+
+  df$distribution <- factor(df$distribution, levels = c("normal",
+                                                        "wide_normal",
+                                                        "uniform",
+                                                        "skew",
+                                                        "multimodal"
+  ))
+  summ_df <- dplyr::group_by(df, distribution) %>%
+    dplyr::summarize(mean = mean(values) )
+
+
+  if(type == "hist"){
+  return(
+    ggplot2::ggplot(df) +
+    ggplot2::aes(values) +
+    ggplot2::geom_histogram(binwidth = b) +
+    ggplot2::geom_density(aes(y = b * ..count..) ) +
+      ggplot2::geom_vline(data = summ_df, ggplot2::aes(xintercept = mean)) +
+      ggplot2::facet_wrap(~ distribution, scales = "free_x") +
+    ggthemes::theme_tufte()
+  )
+  }
+  else {
+    return(
+      ggplot2::ggplot(df) +
+        ggplot2::aes(distribution, values) +
+        ggplot2::geom_boxplot() +
+        ggplot2::geom_jitter() +
+        ggplot2::facet_wrap(~ distribution, scales = "free_x") +
+    ggthemes::theme_tufte()
+    )
+  }
+}
 

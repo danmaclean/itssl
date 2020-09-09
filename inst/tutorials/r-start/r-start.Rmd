@@ -144,7 +144,7 @@ question(
   "Do you fully understand what the `apply` function does?",
   answer("Yes!"),
   answer("No"),
-  answer("No, but that's ok, Ive read the help and it's a bit opaque, but I think some googling will help", correct = TRUE)
+  answer("No, but that's ok, I've read the help and it's a bit opaque, but I think some googling will help", correct = TRUE)
   )
 
 ```

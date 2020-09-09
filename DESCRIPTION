@@ -13,11 +13,16 @@ LazyData: true
 Imports:
     cowplot,
     dplyr,
+    fGarch,
     ggplot2,
     ggthemes,
     gradethis,
+    gridGraphics,
     learnr,
     magrittr,
+    multcomp,
+    rcompanion,
+    readr,
     scatterplot3d,
     tidyr
 RoxygenNote: 7.1.1
