@@ -328,7 +328,8 @@ its_is_the_mean_a_good_summary_time <- function(n, type = "hist") {
   if (n %% 2 == 1){
     n <- n + 1
   }
-  b = 0.2
+  alpha <- 1 / (n / 80)
+  b <-  0.2
   df <- data.frame(
     distribution = c(
       rep("normal", n),
@@ -362,7 +363,7 @@ its_is_the_mean_a_good_summary_time <- function(n, type = "hist") {
     ggplot2::ggplot(df) +
     ggplot2::aes(values) +
     ggplot2::geom_histogram(binwidth = b) +
-    ggplot2::geom_density(aes(y = b * ..count..) ) +
+    ggplot2::geom_density(ggplot2::aes(y = b * ..count..) ) +
       ggplot2::geom_vline(data = summ_df, ggplot2::aes(xintercept = mean)) +
       ggplot2::facet_wrap(~ distribution, scales = "free_x") +
     ggthemes::theme_tufte()
@@ -373,8 +374,8 @@ its_is_the_mean_a_good_summary_time <- function(n, type = "hist") {
       ggplot2::ggplot(df) +
         ggplot2::aes(distribution, values) +
         ggplot2::geom_boxplot() +
-        ggplot2::geom_jitter() +
-        ggplot2::facet_wrap(~ distribution, scales = "free_x") +
+        ggplot2::geom_jitter(alpha = alpha) +
+        ggplot2::facet_wrap(~ distribution, scales = "free") +
     ggthemes::theme_tufte()
     )
   }
