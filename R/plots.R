@@ -381,3 +381,13 @@ its_is_the_mean_a_good_summary_time <- function(n, type = "hist") {
   }
 }
 
+#' plot of the chickwts data
+#'
+#' @export
+#'
+its_plot_chickwts_time <- function() {
+  ggplot2::ggplot(chickwts) +
+    ggplot2::aes(feed, weight) +
+    ggplot2::geom_jitter(ggplot2::aes(colour = feed)) +
+    ggplot2::theme_minimal()
+}
