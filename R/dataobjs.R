@@ -20,14 +20,6 @@ its_remove_a_group_time <- function(df, col = "group", level = "trt2") {
 }
 
 
-#' interaction data from Jim's stats site
-#'
-#' @export
-#'
-its_hot_dog_and_ice_cream_time <- function() {
- readr::read_csv("data/Interactions_Categorical.csv") %>%
-    dplyr::transmute(Food = as.factor(Food), Condiment = as.factor(Condiment), Enjoyment )
-}
 
 #' compost data
 #'
@@ -132,4 +124,20 @@ its_small_data_frame_time <- function() {
     age = c(24,45,11),
     score = runif(3) * 100
   )
+}
+
+#' food data
+#'
+#' @export
+its_food_data_time <- function(n = 20) {
+
+  df1 <- data.frame(Food = rep("Tortilla Chips", n), Condiment = rep("Hummous", n), Enjoyment = rnorm(n, 90, 6) )
+  df2 <- data.frame(Food = rep("Tortilla Chips", n), Condiment = rep("Jam", n), Enjoyment = rnorm(n, 65, 5) )
+
+  df3 <- data.frame(Food = rep("Porridge", n), Condiment = rep("Hummous",n), Enjoyment = rnorm(n, 61, 4))
+  df4 <- data.frame(Food = rep("Porridge", n), Condiment = rep("Jam", n), Enjoyment = rnorm(n, 93, 4.3))
+  dplyr::bind_rows(list(df1,df2,df3,df4))
+
+
+
 }

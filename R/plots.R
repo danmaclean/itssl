@@ -26,7 +26,7 @@ its_axplusb_time <- function(
       fun = linfunc,
       args = list(a,b)
     ) +
-    ggthemes::theme_tufte() +
+    ggplot2::theme_minimal() +
     ggplot2::xlim(xrange) +
     ggplot2::xlab("x") +
     ggplot2::geom_vline(xintercept = 0, linetype = "dotted") +
@@ -78,7 +78,7 @@ its_plot_xy_time <- function(df, line = FALSE, residuals = FALSE) {
   p <- ggplot2::ggplot(df) +
     ggplot2::aes(x,y) +
     ggplot2::geom_point() +
-    ggthemes::theme_tufte()
+    ggplot2::theme_minimal()
   if (line){
     p <- p + ggplot2::geom_smooth(method = "lm", formula = y ~ x, se = FALSE, linetype = "dashed", colour = "dodgerblue")
   }
@@ -112,7 +112,7 @@ its_barplot_time <- function(df, names_to = "group", values_to = "value", colour
   #   p <- ggplot2::ggplot(grouped) +
   #   ggplot2::aes( x = .data[[ {{ names_to }} ]], y = mean ) +
   #   ggplot2::geom_bar(stat = "identity", width = 0.5, fill = colour) +
-  #   ggthemes::theme_tufte()
+  #   ggplot2::theme_minimal()
   #
   #   if (join_tops){
   #
@@ -123,7 +123,7 @@ its_barplot_time <- function(df, names_to = "group", values_to = "value", colour
   p <- ggplot2::ggplot(grouped) +
     ggplot2::aes( .data[[{{names_to}}]], .data[[{{values_to}}]], group = 1)+
     ggplot2::stat_summary(ggplot2::aes(y = .data[[{{values_to}}]]), fun = "mean", geom = "bar", width = 0.5, fill = colour ) +
-    ggthemes::theme_tufte()
+    ggplot2::theme_minimal()
 
     if (points){
       p <- p + ggplot2::geom_jitter()
@@ -166,7 +166,7 @@ its_bendy_line_time <- function() {
   ggplot2::ggplot() +
     ggplot2::aes(x,y) +
     ggplot2::geom_line() +
-    ggthemes::theme_tufte()
+    ggplot2::theme_minimal()
 
 }
 
@@ -254,7 +254,7 @@ its_interaction_example_time <- function(){
     ggplot2::ggplot() +
     ggplot2::aes(x,y, colour = condition) +
     ggplot2::geom_point() + ggplot2::geom_smooth(method = "lm", se = FALSE) +
-    ggthemes::theme_tufte()
+    ggplot2::theme_minimal()
   p2 <- tibble::tibble(
     condition = c(rep("control", 20), rep("a", 20), rep("b", 20), rep("a & b", 20) ),
     measurement =  c(rep(1,20), rep(1.3, 20), rep(2, 20), rep( 4, 20)) + rnorm(80)
@@ -262,19 +262,19 @@ its_interaction_example_time <- function(){
     ggplot2::ggplot() +
       ggplot2::aes( condition, measurement, group = 1)+
       ggplot2::stat_summary(ggplot2::aes(y = measurement), fun = "mean", geom = "bar", width = 0.5, fill = "steelblue" ) +
-      ggthemes::theme_tufte()
+      ggplot2::theme_minimal()
   cowplot::plot_grid(p1, p2, nrow = 1)
 }
 
 #' hot dog and ice cream box plots
 #'
 #' @export
-its_hot_dog_and_ice_cream_plot_time <- function() {
-  food <- its_hot_dog_and_ice_cream_time()
+its_food_plot_time <- function() {
+  food <- its_food_data_time()
   plot_condiment <- food %>%
     #  group_by(Condiment) %>%
     #  summarise(mean_enj = mean(Enjoyment)) %>%
-    dplyr::mutate(cond_num = dplyr::if_else( Condiment == "Chocolate Sauce", 1, 2) ) %>%
+    dplyr::mutate(cond_num = dplyr::if_else( Condiment == "Hummous", 1, 2) ) %>%
     ggplot2::ggplot() + ggplot2::aes(Condiment, Enjoyment) +
     ggplot2::geom_boxplot() +
     ggplot2::geom_jitter(width = 0.1) +
@@ -287,7 +287,7 @@ its_hot_dog_and_ice_cream_plot_time <- function() {
 
 
   plot_food <- food %>%
-    dplyr::mutate(food_num = dplyr::if_else( Food == "Hot Dog", 1, 2) ) %>%
+    dplyr::mutate(food_num = dplyr::if_else( Food == "Tortilla Chips", 1, 2) ) %>%
     ggplot2::ggplot() + ggplot2::aes(Food, Enjoyment) +
 
     ggplot2::geom_boxplot() +
@@ -305,9 +305,9 @@ cowplot::plot_grid(plot_condiment, plot_food, nrow = 1)
 #' plot interaction in food and condiment
 #'
 #' @export
-its_hot_dog_and_ice_cream_two_ways_time <- function() {
-  its_hot_dog_and_ice_cream_time() %>%
-    dplyr::mutate(food_num = dplyr::if_else( Food == "Hot Dog", 1, 2) ) %>%
+its_food_two_ways_time <- function() {
+  its_food_data_time() %>%
+    dplyr::mutate(food_num = dplyr::if_else( Food == "Tortilla Chips", 1, 2) ) %>%
     ggplot2::ggplot() + ggplot2::aes(Food, Enjoyment) +
     ggplot2::geom_jitter( ggplot2::aes(colour = Condiment)) +
     ggplot2::geom_smooth(
@@ -366,7 +366,7 @@ its_is_the_mean_a_good_summary_time <- function(n, type = "hist") {
     ggplot2::geom_density(ggplot2::aes(y = b * ..count..) ) +
       ggplot2::geom_vline(data = summ_df, ggplot2::aes(xintercept = mean)) +
       ggplot2::facet_wrap(~ distribution, scales = "free_x") +
-    ggthemes::theme_tufte()
+    ggplot2::theme_minimal()
   )
   }
   else {
@@ -376,7 +376,7 @@ its_is_the_mean_a_good_summary_time <- function(n, type = "hist") {
         ggplot2::geom_boxplot() +
         ggplot2::geom_jitter(alpha = alpha) +
         ggplot2::facet_wrap(~ distribution, scales = "free") +
-    ggthemes::theme_tufte()
+    ggplot2::theme_minimal()
     )
   }
 }
