@@ -130,7 +130,7 @@ its_small_data_frame_time <- function() {
 #'
 #' @export
 its_food_data_time <- function(n = 20) {
-
+  set.seed(456)
   df1 <- data.frame(Food = rep("Tortilla Chips", n), Condiment = rep("Hummous", n), Enjoyment = rnorm(n, 90, 6) )
   df2 <- data.frame(Food = rep("Tortilla Chips", n), Condiment = rep("Jam", n), Enjoyment = rnorm(n, 65, 5) )
 
