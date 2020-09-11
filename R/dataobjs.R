@@ -130,14 +130,16 @@ its_small_data_frame_time <- function() {
 #'
 #' @export
 its_food_data_time <- function(n = 20) {
-  set.seed(456)
-  df1 <- data.frame(Food = rep("Tortilla Chips", n), Condiment = rep("Hummous", n), Enjoyment = rnorm(n, 90, 6) )
-  df2 <- data.frame(Food = rep("Tortilla Chips", n), Condiment = rep("Jam", n), Enjoyment = rnorm(n, 65, 5) )
+  set.seed("123")
+  df1 <- data.frame(Food = rep("Tortilla Chips", n), Condiment = rep("Hummous", n), Enjoyment = rnorm(n, 90, 5) )
+  df2 <- data.frame(Food = rep("Tortilla Chips", n), Condiment = rep("Jam", n), Enjoyment =  rnorm(n, 60, 4) )
 
-  df3 <- data.frame(Food = rep("Porridge", n), Condiment = rep("Hummous",n), Enjoyment = rnorm(n, 61, 4))
-  df4 <- data.frame(Food = rep("Porridge", n), Condiment = rep("Jam", n), Enjoyment = rnorm(n, 93, 4.3))
-  dplyr::bind_rows(list(df1,df2,df3,df4))
-
+  df3 <- data.frame(Food = rep("Porridge", n), Condiment = rep("Hummous",n), Enjoyment = rnorm(n, 60, 4))
+  df4 <- data.frame(Food = rep("Porridge", n), Condiment = rep("Jam", n), Enjoyment = rnorm(n, 90, 5))
+  df <- dplyr::bind_rows(list(df1,df2,df3,df4))
+  df$Food <- factor(df$Food, levels = c("Porridge", "Tortilla Chips"))
+  df$Condiment <- factor(df$Condiment, levels = c("Hummous", "Jam"))
+  return(df)
 
 
 }

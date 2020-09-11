@@ -287,7 +287,7 @@ its_food_plot_time <- function() {
 
 
   plot_food <- food %>%
-    dplyr::mutate(food_num = dplyr::if_else( Food == "Tortilla Chips", 1, 2) ) %>%
+    dplyr::mutate(food_num = dplyr::if_else( Food == "Tortilla Chips", 2, 1) ) %>%
     ggplot2::ggplot() + ggplot2::aes(Food, Enjoyment) +
 
     ggplot2::geom_boxplot() +
@@ -307,7 +307,7 @@ cowplot::plot_grid(plot_condiment, plot_food, nrow = 1)
 #' @export
 its_food_two_ways_time <- function() {
   its_food_data_time() %>%
-    dplyr::mutate(food_num = dplyr::if_else( Food == "Tortilla Chips", 1, 2) ) %>%
+    dplyr::mutate(food_num = dplyr::if_else( Food == "Tortilla Chips", 2, 1) ) %>%
     ggplot2::ggplot() + ggplot2::aes(Food, Enjoyment) +
     ggplot2::geom_jitter( ggplot2::aes(colour = Condiment)) +
     ggplot2::geom_smooth(
