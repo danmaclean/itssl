@@ -2,7 +2,9 @@
 title: "itssl"
 author: "Dan MacLean"
 date: "`r Sys.Date()`"
-output: html_document
+output:
+  md_document:
+    variant: markdown_github
 ---
 
 ```{r setup, include=FALSE}
