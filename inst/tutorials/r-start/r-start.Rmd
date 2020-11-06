@@ -7,7 +7,10 @@ runtime: shiny_prerendered
 ```{r setup, include=FALSE}
 library(learnr)
 library(gradethis)
+gradethis_setup()
 library(itssl)
+
+#devtools::load_all("../../")
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
@@ -17,10 +20,10 @@ Let's see how variables are used.
 
 Write the R code required to add two plus two:
 
-```{r two-plus-two, exercise=TRUE}
+```{r two, exercise=TRUE}
 
 ```
-```{r two-plus-two-check }
+```{r two-check}
 grade_result(
   pass_if(~ identical(.result, 4), "Good job!")
 )
@@ -109,7 +112,7 @@ grade_code()
 question(
   "What does the output tell us about the column `names`?",
   answer("it has chromosome data in it"),
-  answer("it is text-based data", correct = TRUE),
+  answer("it is text-based (CHaRacter) data", correct = TRUE),
   answer("it has numeric data in it")
 )
 ```
