@@ -210,7 +210,8 @@ its_summary_plot_time <- function() {
 
   ggplot2::ggplot(df) + ggplot2::aes(group, measurement, group=1) +
     ggplot2::geom_jitter(width=0.05) +
-    ggplot2::geom_errorbar( ggplot2::aes(x = group, ymin = mean_y - sd_y, ymax = mean_y + sd_y), data = mean_df, inherit.aes = FALSE, width = 0.1) +
+    #ggplot2::geom_errorbar( ggplot2::aes(x = group, ymin = mean_y - sd_y, ymax = mean_y + sd_y), data = mean_df, inherit.aes = FALSE, width = 0.1) +
+    ggplot2::stat_summary(fun.data = mean_se, geom = "errorbar", width = 0.1) +
     ggplot2::stat_summary(fun="mean", geom="bar",fill = "steelblue", alpha = 0.3, colour = "black") +
     ggplot2::stat_summary(fun="mean", geom="line", colour="red",linetype="dashed") +
     ggplot2::theme_minimal() +
