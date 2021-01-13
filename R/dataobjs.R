@@ -62,6 +62,7 @@ its_hr_scores_time <- function() {
 #'
 #' @export
 its_mendel_data_time <- function() {
+  set.seed(123)
   tibble::tibble(
     cross = sample(c("PP", "PW", "WP", "WW"), 600, replace = TRUE) ,
     result = dplyr::if_else(cross == "WW", "W", "P")
