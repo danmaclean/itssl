@@ -59,7 +59,7 @@ grade_code()
 
 And vectors can be operated on as a single thing, sometimes the operation will return a single number, sometimes a vector.
 
-Here are some R vectors?
+Here are some R vectors.
 ```
 a <- c(1,2,3)
 b <- c("a", "b")
@@ -96,7 +96,7 @@ question(
 Dataframes are rectangular spreadsheet style objects that hold data we wish to analyse. There is a small one called `df` loaded into memory for you, the function `str()` tells us about a dataframe. Use `str()` on the dataframe `df`
 
 ```{r, echo=FALSE}
-df <- its_small_data_frame_time()
+df <- itssl::its_small_data_frame_time()
 ```
 ```{r, str-dataframe, exercise = TRUE}
 
