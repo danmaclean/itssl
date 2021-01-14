@@ -100,7 +100,7 @@ Dataframes are rectangular spreadsheet style objects that hold data we wish to a
 ```{r, echo=FALSE}
 df <- itssl::its_small_data_frame_time()
 ```
-```{r, str-dataframe, exercise = TRUE, echo=FALSE}
+```{r, str-dataframe, exercise = TRUE}
 df <- itssl::its_small_data_frame_time()
 ```
 ```{r str-dataframe-solution}
