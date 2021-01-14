@@ -8,9 +8,11 @@ runtime: shiny_prerendered
 library(learnr)
 library(gradethis)
 gradethis_setup()
-library(itssl)
+if (require("itssl", character.only = TRUE) ){
+  library(itssl)
+} else { devtools::load_all("../../") }
 
-#devtools::load_all("../../")
+
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
@@ -96,7 +98,7 @@ question(
 Dataframes are rectangular spreadsheet style objects that hold data we wish to analyse. There is a small one called `df` loaded into memory for you, the function `str()` tells us about a dataframe. Use `str()` on the dataframe `df`
 
 ```{r, echo=FALSE}
-df <- itssl::its_small_data_frame_time()
+df <- its_small_data_frame_time()
 ```
 ```{r, str-dataframe, exercise = TRUE}
 
